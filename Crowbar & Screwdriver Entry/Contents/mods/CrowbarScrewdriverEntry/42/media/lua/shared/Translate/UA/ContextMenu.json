@@ -1,0 +1,9 @@
+{
+  "ContextMenu_CSE_PryOpen": "Зламати ломом",
+  "ContextMenu_CSE_ForceOpenAgain": "Зламати знову",
+  "ContextMenu_CSE_PickLockScrewdriver": "Зламати замок (викрутка)",
+  "ContextMenu_CSE_CutLockBoltCutters": "Перекусити замок (болторіз)",
+  "ContextMenu_CSE_CutFenceBoltCutters": "Прорізати паркан (болторіз)",
+  "ContextMenu_CSE_PryVehicleDoor": "Зламати двері авто (лом)",
+  "ContextMenu_CSE_LockpickVehicleDoor": "Зламати замок авто (викрутка)"
+}

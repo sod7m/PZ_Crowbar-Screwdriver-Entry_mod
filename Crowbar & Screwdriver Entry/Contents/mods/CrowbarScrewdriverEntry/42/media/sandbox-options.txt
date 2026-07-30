@@ -1,0 +1,179 @@
+VERSION = 1,
+
+option CrowbarScrewdriverEntry.EnableEntryActions {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableEntryActions,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnablePrySystem {
+    page = CrowbarScrewdriverEntry,
+    translation = EnablePrySystem,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableVehicleDoorPry {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableVehicleDoorPry,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableGarageDoorPry {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableGarageDoorPry,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableReinforcedDoorPry {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableReinforcedDoorPry,
+    type = boolean,
+    default = false,
+}
+
+option CrowbarScrewdriverEntry.EnableReinforcedDoorBoltCut {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableReinforcedDoorBoltCut,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.ReinforcedDoorStrengthRequired {
+    page = CrowbarScrewdriverEntry,
+    translation = ReinforcedDoorStrengthRequired,
+    type = integer,
+    min = 0,
+    max = 10,
+    default = 8,
+}
+
+option CrowbarScrewdriverEntry.PrySuccessMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = PrySuccessMultiplier,
+    type = double,
+    min = 0.25,
+    max = 2.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.PryNoiseMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = PryNoiseMultiplier,
+    type = double,
+    min = 0.25,
+    max = 3.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.EnableScrewdriverLockpick {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableScrewdriverLockpick,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.LockpickSuccessMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = LockpickSuccessMultiplier,
+    type = double,
+    min = 0.25,
+    max = 2.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.LockpickNoiseMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = LockpickNoiseMultiplier,
+    type = double,
+    min = 0.1,
+    max = 1.0,
+    default = 0.4,
+}
+
+option CrowbarScrewdriverEntry.EnableBoltCutter {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableBoltCutter,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.BoltCutSuccessMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = BoltCutSuccessMultiplier,
+    type = double,
+    min = 0.25,
+    max = 2.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.BoltCutNoiseMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = BoltCutNoiseMultiplier,
+    type = double,
+    min = 0.25,
+    max = 3.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.EnableFenceCutting {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableFenceCutting,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.FenceCutTimeMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = FenceCutTimeMultiplier,
+    type = double,
+    min = 0.5,
+    max = 3.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.EnableFenceSalvage {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableFenceSalvage,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.ActionTimeMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = ActionTimeMultiplier,
+    type = double,
+    min = 0.25,
+    max = 3.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.ToolWearOnFailMultiplier {
+    page = CrowbarScrewdriverEntry,
+    translation = ToolWearOnFailMultiplier,
+    type = double,
+    min = 0.0,
+    max = 3.0,
+    default = 1.0,
+}
+
+option CrowbarScrewdriverEntry.InjuryChance {
+    page = CrowbarScrewdriverEntry,
+    translation = InjuryChance,
+    type = double,
+    min = 0.0,
+    max = 1.0,
+    default = 0.1,
+}
+
+option CrowbarScrewdriverEntry.InjuryDamage {
+    page = CrowbarScrewdriverEntry,
+    translation = InjuryDamage,
+    type = integer,
+    min = 0,
+    max = 20,
+    default = 5,
+}

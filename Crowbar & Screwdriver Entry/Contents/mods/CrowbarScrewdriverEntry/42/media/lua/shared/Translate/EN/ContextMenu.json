@@ -1,0 +1,9 @@
+{
+  "ContextMenu_CSE_PryOpen": "Pry Open (Crowbar)",
+  "ContextMenu_CSE_ForceOpenAgain": "Force Open Again",
+  "ContextMenu_CSE_PickLockScrewdriver": "Pick Lock (Screwdriver)",
+  "ContextMenu_CSE_CutLockBoltCutters": "Cut Lock (Bolt Cutters)",
+  "ContextMenu_CSE_CutFenceBoltCutters": "Cut Fence (Bolt Cutters)",
+  "ContextMenu_CSE_PryVehicleDoor": "Pry Vehicle Door (Crowbar)",
+  "ContextMenu_CSE_LockpickVehicleDoor": "Pick Vehicle Door (Screwdriver)"
+}

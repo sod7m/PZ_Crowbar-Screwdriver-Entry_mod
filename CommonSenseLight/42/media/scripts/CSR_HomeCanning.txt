@@ -1,0 +1,94 @@
+module Base
+{
+    imports
+    {
+        Base
+    }
+
+    /*
+     * Home canning recipes. All outputs are vanilla items so disabling the
+     * feature mid-save cannot leave dangling references. Recipes are gated
+     * to Cooking 3 to keep the canning loop from trivialising the food
+     * economy. The CSR_HomeCanning.lua hook hides these recipes from the
+     * craft window when EnableHomeCanning is false or when an external
+     * canning recipe mod is detected, so duplicate entries are avoided.
+     */
+
+    craftRecipe CSR_MakeCannedEvaporatedMilk
+    {
+        timedAction = MixingBucket,
+        time = 60,
+        Tags = InHandCraft,
+        category = CommonSenseReborn,
+        SkillRequired = Cooking:3,
+        inputs
+        {
+            item 1 [Base.TinCanEmpty] mode:destroy flags[InheritCondition;ItemCount],
+            item 1 [Base.JarLid] mode:destroy,
+            -fluid 1.0 [CowMilk] mode:mixture,
+        }
+        outputs
+        {
+            item 1 Base.CannedMilk,
+        }
+    }
+
+    craftRecipe CSR_MakeCannedFruit
+    {
+        timedAction = MixingBucket,
+        time = 60,
+        Tags = InHandCraft,
+        category = CommonSenseReborn,
+        SkillRequired = Cooking:3,
+        inputs
+        {
+            item 1 [Base.TinCanEmpty] mode:destroy flags[InheritCondition;ItemCount],
+            item 1 [Base.JarLid] mode:destroy,
+            -fluid 0.25 categories[Water] mode:mixture,
+            item 9 [Base.Peach;Base.Apple;Base.Lemon;Base.Lime;Base.Grapes;Base.Strewberrie;Base.Banana;Base.Cherry;Base.Grapefruit;Base.Mango;Base.Orange;Base.Pear;Base.Pineapple;Base.Watermelon] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.CannedFruitCocktail,
+        }
+    }
+
+    craftRecipe CSR_MakeCannedVeggieSoup
+    {
+        timedAction = MixingBucket,
+        time = 60,
+        Tags = InHandCraft,
+        category = CommonSenseReborn,
+        SkillRequired = Cooking:3,
+        inputs
+        {
+            item 1 [Base.TinCanEmpty] mode:destroy flags[InheritCondition;ItemCount],
+            item 1 [Base.JarLid] mode:destroy,
+            -fluid 0.25 categories[Water] mode:mixture,
+            item 9 [Base.Cucumber;Base.Tomato;Base.Potato;Base.Carrots;Base.Avocado;Base.BellPepper;Base.Cauliflower;Base.Corn;Base.Daikon;Base.Eggplant;Base.Garlic;Base.Greenpeas;Base.Kale;Base.Leek;Base.Lettuce;Base.Onion;Base.Pumpkin;Base.Spinach;Base.SweetPotato;Base.Turnip;Base.Zucchini] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.TinnedSoup,
+        }
+    }
+
+    craftRecipe CSR_MakeCannedWaterRation
+    {
+        timedAction = MixingBucket,
+        time = 60,
+        Tags = InHandCraft,
+        category = CommonSenseReborn,
+        SkillRequired = Cooking:2,
+        inputs
+        {
+            item 1 [Base.TinCanEmpty] mode:destroy flags[InheritCondition;ItemCount],
+            item 1 [Base.JarLid] mode:destroy,
+            -fluid 1.0 [Water] mode:mixture,
+        }
+        outputs
+        {
+            item 1 Base.WaterRationCan,
+        }
+    }
+}

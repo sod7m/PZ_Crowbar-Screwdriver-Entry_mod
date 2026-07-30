@@ -1,0 +1,8 @@
+name=Common Sense Light
+id=CommonSenseLight
+description=Lightweight build of Common Sense Reborn for b42. Keeps: SurvivorBond, KnowledgeSharing, RVExitRescue, WashAll, WashMenu, JarCap, MagazineBatch, EatAllStack, WalkingActions, HideWatermark, RadialMenu, VehicleSalvage, PerfumeDisinfect, StopDropRoll, WarmUp, TowelDry, RainCleanse, PointBlank, BulletPenetration, ReloadAllMags, SeatedReload, EntryActions, LadderClimb, ClimbWithBags, GearSling, SawAll, DismantleWatches, SweepTrash/Ashes, IgniteCorpse.
+version=1.8.37-light
+author=Common Sense Reborn Team (trimmed)
+poster=poster.png
+pack=csr_bath_water_A
+pack=csr_bath_water_B

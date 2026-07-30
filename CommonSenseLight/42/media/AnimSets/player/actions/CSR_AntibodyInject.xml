@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animNode>
+  <m_Name>CSR_AntibodyInject</m_Name>
+  <m_AnimName>CSR_AntibodyInject</m_AnimName>
+  <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+  <m_Looped>false</m_Looped>
+  <m_SpeedScale>0.8</m_SpeedScale>
+  <m_BlendTime>0.25</m_BlendTime>
+  <m_Conditions>
+    <m_Name>PerformingAction</m_Name>
+    <m_Type>STRING</m_Type>
+    <m_StringValue>CSRAntibodyInject</m_StringValue>
+  </m_Conditions>
+</animNode>
