@@ -27,6 +27,10 @@ local function vehicleDoorPryEnabled()
     return pryEnabled() and sandbox().EnableVehicleDoorPry ~= false
 end
 
+local function vehicleDoorLockpickEnabled()
+    return lockpickEnabled() and sandbox().EnableVehicleDoorLockpick ~= false
+end
+
 -- Bolt cutters hang off the master switch only, not off EnablePrySystem:
 -- an admin who turns off crowbar prying hasn't said anything about cutters.
 local function boltCutterEnabled()
@@ -69,7 +73,7 @@ local function findClickedVehicle(worldobjects)
 end
 
 local function addVehicleEntryOptions(context, worldobjects, player, vehicle)
-    if not vehicleDoorPryEnabled() and not lockpickEnabled() then return end
+    if not vehicleDoorPryEnabled() and not vehicleDoorLockpickEnabled() then return end
 
     local crowbar = CSE_Utils.hasCrowbar(player)
     if crowbar and vehicleDoorPryEnabled() then
@@ -85,7 +89,7 @@ local function addVehicleEntryOptions(context, worldobjects, player, vehicle)
     end
 
     local screwdriver = CSE_Utils.hasScrewdriver(player)
-    if screwdriver and lockpickEnabled() then
+    if screwdriver and vehicleDoorLockpickEnabled() then
         local part = CSE_Utils.findVehicleActionPart(player, vehicle, CSE_Utils.canLockpickVehiclePart)
         if part then
             local option = context:addOption(getText("ContextMenu_CSE_LockpickVehicleDoor"), worldobjects, CSE_ContextMenu.onLockpickVehicleDoor, player, vehicle, part, screwdriver)
@@ -160,7 +164,7 @@ function CSE_ContextMenu.addWorldObjectOptions(playerNum, context, worldobjects,
             option.iconTexture = boltCutters:getTexture()
             setTooltip(option, {
                 "Cut straight through the lock mechanism with bolt cutters.",
-                "Works on any locked door or gate, reinforced ones included.",
+                "Works on locked doors and gates, reinforced ones included where the server allows it.",
                 "Success scales with Strength, Fitness, and tool condition.",
             })
         end
@@ -272,7 +276,7 @@ local function hookVehicleRadialMenu()
         end
 
         local screwdriver = CSE_Utils.hasScrewdriver(playerObj)
-        if screwdriver and lockpickEnabled() then
+        if screwdriver and vehicleDoorLockpickEnabled() then
             local part = CSE_Utils.findVehicleActionPart(playerObj, vehicle, CSE_Utils.canLockpickVehiclePart)
             if part then
                 menu:addSlice(getText("ContextMenu_CSE_LockpickVehicleDoor"), screwdriver:getTexture(), function()

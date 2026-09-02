@@ -35,13 +35,6 @@ option CrowbarScrewdriverEntry.EnableReinforcedDoorPry {
     default = false,
 }
 
-option CrowbarScrewdriverEntry.EnableReinforcedDoorBoltCut {
-    page = CrowbarScrewdriverEntry,
-    translation = EnableReinforcedDoorBoltCut,
-    type = boolean,
-    default = true,
-}
-
 option CrowbarScrewdriverEntry.ReinforcedDoorStrengthRequired {
     page = CrowbarScrewdriverEntry,
     translation = ReinforcedDoorStrengthRequired,
@@ -76,6 +69,36 @@ option CrowbarScrewdriverEntry.EnableScrewdriverLockpick {
     default = true,
 }
 
+option CrowbarScrewdriverEntry.EnableVehicleDoorLockpick {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableVehicleDoorLockpick,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableGarageDoorLockpick {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableGarageDoorLockpick,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableReinforcedDoorLockpick {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableReinforcedDoorLockpick,
+    type = boolean,
+    default = false,
+}
+
+option CrowbarScrewdriverEntry.ReinforcedDoorLockpickNimbleRequired {
+    page = CrowbarScrewdriverEntry,
+    translation = ReinforcedDoorLockpickNimbleRequired,
+    type = integer,
+    min = 0,
+    max = 10,
+    default = 6,
+}
+
 option CrowbarScrewdriverEntry.LockpickSuccessMultiplier {
     page = CrowbarScrewdriverEntry,
     translation = LockpickSuccessMultiplier,
@@ -99,6 +122,29 @@ option CrowbarScrewdriverEntry.EnableBoltCutter {
     translation = EnableBoltCutter,
     type = boolean,
     default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableGarageDoorBoltCut {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableGarageDoorBoltCut,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.EnableReinforcedDoorBoltCut {
+    page = CrowbarScrewdriverEntry,
+    translation = EnableReinforcedDoorBoltCut,
+    type = boolean,
+    default = true,
+}
+
+option CrowbarScrewdriverEntry.ReinforcedDoorBoltCutStrengthRequired {
+    page = CrowbarScrewdriverEntry,
+    translation = ReinforcedDoorBoltCutStrengthRequired,
+    type = integer,
+    min = 0,
+    max = 10,
+    default = 0,
 }
 
 option CrowbarScrewdriverEntry.BoltCutSuccessMultiplier {

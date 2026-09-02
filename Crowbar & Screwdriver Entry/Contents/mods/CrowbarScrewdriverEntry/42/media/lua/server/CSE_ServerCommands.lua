@@ -23,6 +23,10 @@ local function vehicleDoorPryEnabled()
     return pryEnabled() and sandbox().EnableVehicleDoorPry ~= false
 end
 
+local function vehicleDoorLockpickEnabled()
+    return lockpickEnabled() and sandbox().EnableVehicleDoorLockpick ~= false
+end
+
 local function boltCutterEnabled()
     return entryActionsEnabled() and sandbox().EnableBoltCutter ~= false
 end
@@ -282,7 +286,7 @@ function CSE_ServerCommands.handlePryVehicleDoor(player, args)
 end
 
 function CSE_ServerCommands.handleLockpickVehicleDoor(player, args)
-    if not player or not args or not lockpickEnabled() then return end
+    if not player or not args or not vehicleDoorLockpickEnabled() then return end
 
     local screwdriver = findInventoryItemById(player, args.screwdriverId)
     if not screwdriver then

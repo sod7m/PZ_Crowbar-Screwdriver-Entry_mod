@@ -214,12 +214,14 @@ function CSE_Utils.wasForcedBefore(target)
 end
 
 -- Shared gate for reinforced/security (forceLocked) doors: an admin can put
--- them off-limits entirely, or behind a Strength requirement. Doors already
+-- them off-limits per tool, or behind a skill requirement. Doors already
 -- forced once are exempt so re-entry never gets walled off retroactively.
 --
--- minStrength is passed in rather than read here because the requirement is
--- about muscling a crowbar; a tool with its own mechanical advantage passes 0.
-function CSE_Utils.canBreakReinforcedDoor(target, player, enabled, minStrength)
+-- minLevel/perk are passed in rather than read here because the requirement
+-- depends on the tool: muscling a crowbar is Strength, feeling the pins with
+-- a screwdriver is Nimble, and a bolt cutter's leverage is mechanical, so it
+-- asks for nothing unless an admin says otherwise.
+function CSE_Utils.canBreakReinforcedDoor(target, player, enabled, minLevel, perk)
     if not CSE_Utils.hasForceLockedProperty(target) then return true end
     if CSE_Utils.wasForcedBefore(target) then return true end
 
@@ -227,9 +229,10 @@ function CSE_Utils.canBreakReinforcedDoor(target, player, enabled, minStrength)
         return false, "Reinforced doors disabled"
     end
 
-    minStrength = tonumber(minStrength) or 0
-    if minStrength > 0 and player and player.getPerkLevel and player:getPerkLevel(Perks.Strength) < minStrength then
-        return false, "Need more strength"
+    minLevel = tonumber(minLevel) or 0
+    perk = perk or Perks.Strength
+    if minLevel > 0 and player and player.getPerkLevel and player:getPerkLevel(perk) < minLevel then
+        return false, "Skill level too low"
     end
 
     return true
@@ -307,10 +310,15 @@ function CSE_Utils.canPryWorldTarget(target, player)
     return CSE_Utils.canBreakReinforcedDoor(
         target, player,
         sandbox().EnableReinforcedDoorPry == true,
-        sandbox().ReinforcedDoorStrengthRequired or 8
+        sandbox().ReinforcedDoorStrengthRequired or 8,
+        Perks.Strength
     )
 end
 
+-- Lockpicking is split the same way prying is: garage doors and reinforced
+-- doors each get their own toggle on top of the master screwdriver switch,
+-- so an admin can leave house doors pickable while keeping security doors
+-- (which are off by default) out of reach of a screwdriver.
 function CSE_Utils.canLockpickWorldTarget(target, player)
     if not target then
         return false, "Not a lockpick target"
@@ -324,7 +332,24 @@ function CSE_Utils.canLockpickWorldTarget(target, player)
     if target:IsOpen() then
         return false, "Door already open"
     end
-    return (target.isLocked and target:isLocked()) or (target.isLockedByKey and target:isLockedByKey()) or false
+
+    local locked = (target.isLocked and target:isLocked())
+        or (target.isLockedByKey and target:isLockedByKey())
+        or false
+    if not locked then
+        return false, "Not locked"
+    end
+
+    if CSE_Utils.isGarageDoor(target) and sandbox().EnableGarageDoorLockpick == false then
+        return false, "Garage door lockpicking disabled"
+    end
+
+    return CSE_Utils.canBreakReinforcedDoor(
+        target, player,
+        sandbox().EnableReinforcedDoorLockpick == true,
+        sandbox().ReinforcedDoorLockpickNimbleRequired or 0,
+        Perks.Nimble
+    )
 end
 
 -- Bolt cutters go through the lock itself rather than the frame, so unlike
@@ -350,9 +375,20 @@ function CSE_Utils.canBoltCutWorldTarget(target, player)
     if CSE_Utils.isBarricadedForPlayer(target, player) then
         return false, "Target is barricaded"
     end
+    if CSE_Utils.isGarageDoor(target) and sandbox().EnableGarageDoorBoltCut == false then
+        return false, "Garage door cutting disabled"
+    end
+
     -- Bolt cutters get their own reinforced-door toggle, defaulting to on:
     -- a chain and padlock give way to them even where a crowbar wouldn't.
-    return CSE_Utils.canBreakReinforcedDoor(target, player, sandbox().EnableReinforcedDoorBoltCut ~= false)
+    -- The Strength requirement defaults to 0 for the same reason - it exists
+    -- only so an admin who wants one can set it.
+    return CSE_Utils.canBreakReinforcedDoor(
+        target, player,
+        sandbox().EnableReinforcedDoorBoltCut ~= false,
+        sandbox().ReinforcedDoorBoltCutStrengthRequired or 0,
+        Perks.Strength
+    )
 end
 
 -- Wire-fence panels are plain IsoObjects, not doors or thumpables, so there
